@@ -12,6 +12,11 @@ app.get('/bt21', (req, res) => {
     res.json(bt21)
   })
 
+app.get('/bt21/:id', (req, res) => {
+    res.json(bt21.find(bt21 => bt21.id === req.params.id))
+  })
+  
+
 app.listen(3000, () => {
   console.log('Start server at port 3000.')
 })
