@@ -66,9 +66,9 @@ app.put('/bt21/:id', (req, res) => {
   })
 
 app.delete('/bt21/:id', (req, res) => {
-    const deletedIndex = bt21.findIndex(bt21 => bt21.id === req.params.id)
-    bt21.splice(deletedIndex, 1)
-    res.status(204).send()
+    var id = req.params.id
+    firebase.database().ref('/bt21/' + id).remove();
+    res.send("Deleted!")
  })
 
 app.listen(3000, () => {
