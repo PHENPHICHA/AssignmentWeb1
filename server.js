@@ -39,8 +39,6 @@ app.post('/bt21', (req, res) => {
     var name = req.body.name
     var by = req.body.by
     var price = req.body.price
-
-    // Get a key for a new Post.
     var newPostKey = firebase.database().ref('/bt21/' + id).set({
         id: id,
         name: name,
@@ -52,8 +50,19 @@ app.post('/bt21', (req, res) => {
  })
 
 app.put('/bt21/:id', (req, res) => {
-    const updateIndex = bt21.findIndex(bt21 => bt21.id === req.params.id)
-    res.json(Object.assign(bt21[updateIndex], req.body))
+    var id = req.body.id
+    var name = req.body.name
+    var by = req.body.by
+    var price = req.body.price
+    var put = { 
+        id: id,
+        name: name,
+        by: by,
+        price: price
+
+    };
+    firebase.database().ref('/bt21/' + id).update(put);
+    res.send("Updated!")
   })
 
 app.delete('/bt21/:id', (req, res) => {
