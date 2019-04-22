@@ -23,6 +23,17 @@ app.post('/bt21', (req, res) => {
     res.status(201).json(req.body)
   })
 
+app.put('/bt21/:id', (req, res) => {
+    const updateIndex = bt21.findIndex(bt21 => bt21.id === req.params.id)
+    res.json(Object.assign(bt21[updateIndex], req.body))
+  })
+
+app.delete('/bt21/:id', (req, res) => {
+    const deletedIndex = bt21.findIndex(bt21 => bt21.id === req.params.id)
+    bt21.splice(deletedIndex, 1)
+    res.status(204).send()
+ })
+
 app.listen(3000, () => {
   console.log('Start server at port 3000.')
 })
