@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+
+
 const AddProductForm = props => {
   const initialFormState = { id: null, name: '', price: '' }
   const [product, setProduct] = useState(initialFormState)
@@ -9,7 +11,7 @@ const AddProductForm = props => {
 
     setProduct({ ...product, [name]: value })
   }
-
+  
   return (
     <form
       onSubmit={event => {

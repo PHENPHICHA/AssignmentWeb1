@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ProductTable from './tables/ProductTable'
 import AddProductForm from './forms/AddProductForm'
 
+
 const App = () => {
   const productsData = [
     { id: 1, name: 'BAG', price: '100' },
@@ -14,10 +15,13 @@ const App = () => {
     product.id = products.length + 1
     setProducts([...products, product])
   }
+ 
   const deleteProduct = id => {
   
   setProducts(products.filter(product => product.id !== id))
  }
+
+ 
   return (
     <div className="container">
       <h1>App</h1>
